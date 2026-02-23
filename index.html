@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Human Web</title>
+    <meta
+      name="description"
+      content="A movement to restore human accountability to online content through cryptographic signatures and human-gated trust networks."
+    />
+    <meta property="og:title" content="The Human Web" />
+    <meta
+      property="og:description"
+      content="A movement to restore human accountability to online content through cryptographic signatures and human-gated trust networks."
+    />
+    <meta property="og:url" content="https://thehumanweb.org" />
+    <meta name="twitter:card" content="summary" />
+    <!-- Source Serif 4 typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "earth-dark": "#8B7355",
+              "earth-light": "#B5654A",
+              "warm-bg": "#FDF8F3",
+              "dark-bg": "#2A2420",
+              "dark-surface": "#35302B",
+              "dark-text": "#F5F1E8",
+              "dark-text-muted": "#C9C1B5",
+            },
+            fontFamily: {
+              sans: [
+                "Source Serif 4",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+              serif: [
+                "Source Serif 4",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Initialize dark mode before page renders to prevent flash -->
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("darkMode");
+        if (savedMode === "true") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body
+    class="h-full bg-warm-bg dark:bg-dark-bg"
+  >
+    <div class="min-h-full flex flex-col">
+      <!-- Main Content -->
+      <main class="flex-1">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <!-- Page Header -->
+          <div class="flex items-center justify-between mb-16">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-dark-text">The Human Web</h1>
+            <button
+              id="dark-toggle"
+              onclick="toggleDarkMode()"
+              class="text-xl text-gray-600 hover:text-black transition-all hover:scale-110 dark:text-dark-text-muted dark:hover:text-dark-text"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dark:hidden">&#9790;</span>
+              <span class="hidden dark:inline">&#9728;</span>
+            </button>
+          </div>
+
+          <!-- Article -->
+          <article class="mb-12">
+            <!-- Article Header -->
+            <header class="mb-12">
+              <h2
+                class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 leading-tight dark:text-dark-text"
+              >
+                Haters Will Say It's Fake
+              </h2>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-sm text-gray-600 dark:text-dark-text-muted">
+                <time datetime="2026-02-22">February 22, 2026</time>
+              </div>
+              <div class="mt-4 inline-flex items-center gap-2 px-3 py-2 border-2 border-earth-dark rounded-md bg-white dark:border-earth-light dark:bg-dark-bg">
+                <span class="text-sm font-medium text-earth-dark dark:text-earth-light">Nostr-signed</span>
+                <span class="text-xs font-mono text-gray-500 dark:text-dark-text-muted truncate max-w-xs" title="npub1stm6fl45mt53j82a7c4vfqjshv79rx2ysl63xtqjqvfudqg3yndss670x4">npub1stm6fl...s670x4</span>
+                <a href="#verify" class="text-xs text-earth-dark hover:underline dark:text-earth-light">Verify</a>
+              </div>
+            </header>
+
+            <!-- Article Content -->
+            <div
+              class="text-gray-800 leading-relaxed dark:text-dark-text space-y-6"
+            >
+              <p>
+                I am not a robot. I am a human being, a fact I frequently prove
+                to robots, by clicking on images of fire hydrants or
+                motorcycles... but how do I prove it to you, dear reader? The
+                unfortunate reality is, I cannot. I could tell you who I am
+                &mdash; that I'm Bill Smith, or Maria Garcia, or even your
+                grandson who needs a loan fast! &mdash; but I could be lying. And
+                with the advancement of AI, I can be an excellent liar.
+              </p>
+
+              <p>
+                Before AI, times were simpler. When we encountered an opinion or
+                an essay on the internet, we knew a human created it. The content
+                may have been sourced, misattributed, or plagiarized, but
+                someone, somewhere, wrote it at some point. Today we have no such
+                guarantees. AI cranks out essays by the millions. Some of them
+                are edited and verified, correct and useful, while others are
+                completely made up slop. If you're not already informed on the
+                subject, you may have a very hard time telling which category a
+                particular essay belongs to.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                There was a time when finding something worth reading on the
+                internet meant following a chain of people. Someone you trusted
+                kept a blogroll, a list of writers they vouched for. You followed
+                those links, decided for yourself whether the new voice was worth
+                your time, and maybe added them to your own RSS feed. It wasn't
+                perfect, but it was legible. You knew who was recommending what,
+                and why, and you could walk away whenever you wanted.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                Then came &ldquo;social media.&rdquo; Social media comes in a
+                variety of forms, but what they have in common is that they are
+                siloed platforms where most of the content we see is pushed onto
+                us by an opaque algorithm that we don't control. Much of the
+                content is advertisements. Other content is generated by bots
+                pretending to be humans, utterly incapable of clicking fire
+                hydrants. No longer do we spend our time reading, thinking,
+                interacting. Instead we spend our time scrolling, numbing out,
+                and reacting. Our attention is captured and directed toward
+                whatever end the algorithm wants to achieve &mdash; engagement?
+                outrage? ad revenue? cultural disintegration? &mdash; we'll never
+                know because we can't see inside. What's more, the algorithm has
+                no concept of trust. It doesn't know or care whether content
+                comes from someone I respect, a bot farm, or a scammer
+                impersonating a grandson. It pushes what it pushes.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                Suppose we accept that I can't prove to you that I'm a human.
+                What I can do, though, is digitally sign this article, so that
+                you can be certain that it originated from &ldquo;me,&rdquo;
+                whoever &ldquo;me&rdquo; is. The next time I publish something,
+                I'll sign that content, too. You'll be certain that whoever wrote
+                the content, it came from the same identity. In no time at all,
+                that identity becomes meaningful. You'll soon decide whether my
+                content, the content bearing my signature, is worth your time or
+                worthless slop. Maybe one day you see my signature linked from a
+                website you already trust, or a social media profile you already
+                follow. Now you can connect the dots: the person behind that
+                signature is someone you recognize through another channel. The
+                cryptographic identity and the known person become the same
+                thing.
+              </p>
+
+              <p>
+                But here's what makes this interesting. It's not just that you
+                can verify my content came from the same identity over time. It's
+                that my identity becomes <em>accountable</em>. If I publish
+                something false or lazy or harmful, that's attached to my
+                signature, my identity. I can always start over with a fresh
+                identity... but I start at zero. Reputation built, good or bad,
+                stays with the abandoned identity.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                All of this might be starting to sound good, but do we really
+                want or need yet another social media platform with yet another
+                identity to manage? Good question, and no, we certainly don't
+                want another platform.
+              </p>
+
+              <p>
+                What I want is to create an identity for myself, a signature I
+                can apply to all the content that I produce, one time and one
+                time only, and then use that identity on any platform or system
+                that honors it. Post here, comment there, publish on my own site,
+                and it's all verifiably <em>me</em>. Not because some company
+                says so, but because cryptography says so.
+              </p>
+
+              <p>
+                This isn't hypothetical. A protocol called Nostr does exactly
+                this. It's not a platform; it's a layer underneath platforms. You
+                generate a keypair, and that's your identity. Any application
+                that speaks Nostr can verify your signature. Your identity is
+                yours, portable, controlled by no one but you.
+              </p>
+
+              <p>
+                Nostr is a free and open standard. The barrier to entry is low,
+                and it solves a problem that's only getting worse. Some platforms
+                already support it. More will follow, because the need is obvious
+                and the protocol is simple.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                Let me be clear about what I'm <em>not</em> proposing.
+              </p>
+
+              <p>
+                This isn't a system that detects bots. Nothing stops someone from
+                generating a thousand identities and posting AI slop under each
+                one. The protocol doesn't know or care whether you're human.
+              </p>
+
+              <p>
+                It's not a social credit score. It's not a popularity contest.
+                Humans are stewards of identity trust, but they cannot censor
+                content. The firehose is always there for anyone who wants it.
+                What changes is <em>your</em> ability to filter it according to
+                your own judgment. Algorithms don't determine what is worthwhile.
+                You do.
+              </p>
+
+              <p>
+                Will some people create echo chambers? Probably. But at least
+                they're doing it to themselves, eyes open, rather than having an
+                algorithm do it to them in the dark. The walls are glass, and you
+                can tear them down whenever you want.
+              </p>
+
+              <p>
+                So what does this system actually do? It puts humans back in
+                control of what they see.
+              </p>
+
+              <p>
+                You decide who to trust. Maybe you trust me because you've read
+                my work for years. Maybe you trust someone else because three
+                people you already trust have vouched for them. Maybe you browse
+                the open firehose looking for new voices, but you do it
+                <em>knowing</em> you're in unvetted territory.
+              </p>
+
+              <p>
+                Bots can play this game. They can generate identities, produce
+                content, even build fake trust networks where bots vouch for
+                other bots. But here's the thing: trust graphs reveal character
+                over time. Who you trust is a signal. An eloquent bot that
+                vouches for a dozen slop factories will eventually betray itself,
+                or reveal that it's a human with terrible judgment, which is its
+                own useful information.
+              </p>
+
+              <p>
+                No system is immune to gaming. The question is what happens when
+                gaming is detected. In an algorithmic feed, the damage is done:
+                the slop already spread to millions. In a human-gated trust
+                network, you prune the connection and move on. The cost of
+                deception compounds. Reputation, once burned, stays behind with
+                the abandoned key.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                So what do we call all of this? Signed identity, human-gated
+                trust, filtering at the edges instead of the center?
+              </p>
+
+              <p>I've started calling it The Human Web.</p>
+
+              <p>
+                It's not the human web because it excludes bots or guarantees
+                only humans are contributing content. It's the human web because
+                humans are restored to their rightful place as stewards of
+                content and information.
+              </p>
+
+              <p>
+                It rebuilds something the internet has lost: a network of people
+                vouching for people. Individuals deciding who to trust, and that
+                trust extending outward through human relationships rather than
+                algorithmic overrides.
+              </p>
+
+              <p>
+                The Human Web doesn't fight AI. It doesn't detect bots. It
+                simply makes human judgment the gatekeeper again, and makes
+                identity persistent enough that judgment can actually work.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>Imagine this world has matured.</p>
+
+              <p>
+                Your grandmother gets a call. It's your voice &mdash; or
+                something that sounds exactly like it &mdash; urgently asking for
+                money. Today, she might fall for it. The voice is convincing. The
+                story is plausible. She has no way to verify.
+              </p>
+
+              <p>
+                But in a world where The Human Web is ubiquitous, she looks at
+                her screen and sees: unknown identity. No history. No connection
+                to anyone she trusts. Zero trust signal.
+              </p>
+
+              <p>She hangs up.</p>
+
+              <p>
+                That's the future I want to build. Not a world without deception
+                &mdash; that's impossible. A world where deception is
+                <em>legible</em>. Where you can see what you're dealing with.
+                Where trust is earned slowly and lost instantly, and the scammers
+                are operating uphill against a system designed for humans, by
+                humans.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p>
+                You don't need to wait for platforms to change. You can start
+                building The Human Web right now.
+              </p>
+
+              <p>
+                <strong>If you create content</strong>: Start signing it. Get a
+                Nostr identity. It takes five minutes. Every article, every post,
+                every piece of work you publish can carry your signature. Make it
+                visible. Put your public key in your bio. Link to it. Let people
+                verify that the content they're reading came from you.
+              </p>
+
+              <p>
+                <strong>If you consume content</strong>: Start asking for
+                signatures. When you read something you value, check if it's
+                signed. Follow writers who sign their work. Build your own list
+                of people you trust. Ask your favorite platforms to integrate
+                Nostr. Demand the ability to verify what you're reading.
+              </p>
+
+              <p>
+                <strong>If you build platforms</strong>: Integrate the protocol.
+                Nostr is free, open, and straightforward to implement. Let your
+                users bring their own identities. Let them verify signatures.
+                Give them tools to build trust networks. Stop gatekeeping
+                identity. Cryptography does that job better than you ever will.
+              </p>
+
+              <p>
+                <strong>If you're skeptical</strong>: Good. This isn't a perfect
+                system. But it's better than algorithmic feeds pushing
+                unattributable slop. Start small. Try it. See if knowing who
+                created something changes how you engage with it.
+              </p>
+
+              <p>
+                The Human Web doesn't need everyone. It needs a critical mass. It
+                needs you, and the people you trust, and the people they trust.
+                That's how every network that matters has ever been built: human
+                by human, connection by connection.
+              </p>
+
+              <p>
+                People are already building pieces of this puzzle: clients,
+                tools, protocols, applications. Some will succeed, some will
+                fail. That's fine. The movement matters more than any single
+                implementation.
+              </p>
+
+              <p>
+                This article is signed with my key. The next thing I publish will
+                bear the same signature. Over time, you'll decide whether I'm
+                worth trusting. That's not a bug; that's the whole point.
+                Reputation can't be bought or algorithmically generated. It has
+                to be earned, one piece of content at a time.
+              </p>
+
+              <p>
+                I can't prove to you that I'm human by clicking on fire
+                hydrants. But I can prove that whoever wrote this is the same
+                person who will write the next thing. That's not a perfect
+                system. But it's a <em>human</em> system, and right now we need
+                the web to be a little more human.
+              </p>
+
+              <p>Haters will say it's fake. But now you know how to check.</p>
+            </div>
+          </article>
+
+          <!-- Signature Verification -->
+          <section
+            id="verify"
+            class="border-t border-gray-200 pt-8 dark:border-dark-surface"
+          >
+            <h2
+              class="text-lg font-semibold text-gray-900 mb-4 dark:text-dark-text"
+            >
+              Verify this article
+            </h2>
+            <p class="text-sm text-gray-600 mb-4 dark:text-dark-text-muted">
+              This manifesto is cryptographically signed using the
+              <a
+                href="https://github.com/nostr-protocol/nostr"
+                target="_blank"
+                rel="noopener"
+                class="text-earth-dark hover:underline dark:text-earth-light"
+                >Nostr protocol</a
+              >. The signed event below contains the full article content, the
+              author's public key, and a Schnorr signature that proves the
+              content has not been altered since it was signed.
+            </p>
+
+            <div class="space-y-3 text-sm mb-6">
+              <div>
+                <span
+                  class="font-medium text-gray-700 dark:text-dark-text-muted"
+                  >Author (npub):</span
+                >
+                <span
+                  class="font-mono text-xs text-gray-600 dark:text-dark-text-muted break-all"
+                  >npub1stm6fl45mt53j82a7c4vfqjshv79rx2ysl63xtqjqvfudqg3yndss670x4</span
+                >
+              </div>
+              <div>
+                <span
+                  class="font-medium text-gray-700 dark:text-dark-text-muted"
+                  >Event ID:</span
+                >
+                <span
+                  class="font-mono text-xs text-gray-600 dark:text-dark-text-muted break-all"
+                  >8b50baa713637417c1368740e82881105b6398682f0f687f4346e1ab71e0ee72</span
+                >
+              </div>
+            </div>
+
+            <h3
+              class="text-sm font-semibold text-gray-900 mb-2 dark:text-dark-text"
+            >
+              How to verify
+            </h3>
+            <p class="text-sm text-gray-600 mb-3 dark:text-dark-text-muted">
+              Copy the signed event JSON below and verify it with
+              <a
+                href="https://github.com/fiatjaf/nak"
+                target="_blank"
+                rel="noopener"
+                class="text-earth-dark hover:underline dark:text-earth-light"
+                >nak</a
+              >
+              (the Nostr Army Knife):
+            </p>
+            <pre
+              class="text-xs text-gray-600 bg-gray-50 rounded-lg p-3 mb-4 dark:bg-dark-bg dark:text-dark-text-muted"
+            ><code>echo '&lt;event json&gt;' | nak verify</code></pre>
+
+            <details class="group">
+              <summary
+                class="cursor-pointer text-sm font-medium text-earth-dark hover:underline dark:text-earth-light"
+              >
+                Show signed event JSON
+              </summary>
+              <div class="mt-3 relative">
+                <button
+                  onclick="copyEvent()"
+                  class="absolute top-2 right-2 text-xs px-2 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors dark:bg-dark-surface dark:text-dark-text-muted dark:hover:bg-dark-bg"
+                >
+                  Copy
+                </button>
+                <pre
+                  id="signed-event"
+                  class="text-xs text-gray-600 bg-gray-50 rounded-lg p-3 pr-16 overflow-x-auto dark:bg-dark-bg dark:text-dark-text-muted"
+                ><code id="event-json"></code></pre>
+              </div>
+            </details>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="bg-white/50 backdrop-blur-sm border-t border-gray-100 py-8 dark:bg-dark-surface/50 dark:border-dark-surface"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600 dark:text-dark-text-muted"
+        >
+          <div class="flex justify-center items-center space-x-4">
+            <a
+              href="https://nostrings.pub"
+              class="hover:text-earth-dark transition-colors dark:hover:text-dark-text"
+              >nostrings.pub</a
+            >
+            <span class="text-gray-400 dark:text-dark-text-muted"
+              >&#183;</span
+            >
+            <a
+              href="https://github.com/nostr-protocol/nostr"
+              target="_blank"
+              rel="noopener"
+              class="hover:text-earth-dark transition-colors dark:hover:text-dark-text"
+              >Nostr Protocol</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Signed Event Data -->
+    <script id="nostr-event" type="application/json">
+      {"kind":30023,"id":"8b50baa713637417c1368740e82881105b6398682f0f687f4346e1ab71e0ee72","pubkey":"82f7a4feb4dae9191d5df62ac48250bb3c51994487f5132c120313c6811124db","created_at":1771803452,"tags":[["title","Haters Will Say It's Fake"],["published_at","1771803418"],["d","haters-will-say-its-fake"]],"content":"I am not a robot. I am a human being, a fact I frequently prove to robots, by clicking on images of fire hydrants or motorcycles... but how do I prove it to you, dear reader? The unfortunate reality is, I cannot. I could tell you who I am — that I'm Bill Smith, or Maria Garcia, or even your grandson who needs a loan fast! — but I could be lying. And with the advancement of AI, I can be an excellent liar.\n\nBefore AI, times were simpler. When we encountered an opinion or an essay on the internet, we knew a human created it. The content may have been sourced, misattributed, or plagiarized, but someone, somewhere, wrote it at some point. Today we have no such guarantees. AI cranks out essays by the millions. Some of them are edited and verified, correct and useful, while others are completely made up slop. If you're not already informed on the subject, you may have a very hard time telling which category a particular essay belongs to.\n\n---\n\nThere was a time when finding something worth reading on the internet meant following a chain of people. Someone you trusted kept a blogroll, a list of writers they vouched for. You followed those links, decided for yourself whether the new voice was worth your time, and maybe added them to your own RSS feed. It wasn't perfect, but it was legible. You knew who was recommending what, and why, and you could walk away whenever you wanted.\n\n---\n\nThen came \"social media.\" Social media comes in a variety of forms, but what they have in common is that they are siloed platforms where most of the content we see is pushed onto us by an opaque algorithm that we don't control. Much of the content is advertisements. Other content is generated by bots pretending to be humans, utterly incapable of clicking fire hydrants. No longer do we spend our time reading, thinking, interacting. Instead we spend our time scrolling, numbing out, and reacting. Our attention is captured and directed toward whatever end the algorithm wants to achieve — engagement? outrage? ad revenue? cultural disintegration? — we'll never know because we can't see inside. What's more, the algorithm has no concept of trust. It doesn't know or care whether content comes from someone I respect, a bot farm, or a scammer impersonating a grandson. It pushes what it pushes.\n\n---\n\nSuppose we accept that I can't prove to you that I'm a human. What I can do, though, is digitally sign this article, so that you can be certain that it originated from \"me,\" whoever \"me\" is. The next time I publish something, I'll sign that content, too. You'll be certain that whoever wrote the content, it came from the same identity. In no time at all, that identity becomes meaningful. You'll soon decide whether my content, the content bearing my signature, is worth your time or worthless slop. Maybe one day you see my signature linked from a website you already trust, or a social media profile you already follow. Now you can connect the dots: the person behind that signature is someone you recognize through another channel. The cryptographic identity and the known person become the same thing.\n\nBut here's what makes this interesting. It's not just that you can verify my content came from the same identity over time. It's that my identity becomes _accountable_. If I publish something false or lazy or harmful, that's attached to my signature, my identity. I can always start over with a fresh identity... but I start at zero. Reputation built, good or bad, stays with the abandoned identity.\n\n---\n\nAll of this might be starting to sound good, but do we really want or need yet another social media platform with yet another identity to manage? Good question, and no, we certainly don't want another platform.\n\nWhat I want is to create an identity for myself, a signature I can apply to all the content that I produce, one time and one time only, and then use that identity on any platform or system that honors it. Post here, comment there, publish on my own site, and it's all verifiably _me_. Not because some company says so, but because cryptography says so.\n\nThis isn't hypothetical. A protocol called Nostr does exactly this. It's not a platform; it's a layer underneath platforms. You generate a keypair, and that's your identity. Any application that speaks Nostr can verify your signature. Your identity is yours, portable, controlled by no one but you.\n\nNostr is a free and open standard. The barrier to entry is low, and it solves a problem that's only getting worse. Some platforms already support it. More will follow, because the need is obvious and the protocol is simple.\n\n---\n\nLet me be clear about what I'm _not_ proposing.\n\nThis isn't a system that detects bots. Nothing stops someone from generating a thousand identities and posting AI slop under each one. The protocol doesn't know or care whether you're human.\n\nIt's not a social credit score. It's not a popularity contest. Humans are stewards of identity trust, but they cannot censor content. The firehose is always there for anyone who wants it. What changes is _your_ ability to filter it according to your own judgment. Algorithms don't determine what is worthwhile. You do.\n\nWill some people create echo chambers? Probably. But at least they're doing it to themselves, eyes open, rather than having an algorithm do it to them in the dark. The walls are glass, and you can tear them down whenever you want.\n\nSo what does this system actually do? It puts humans back in control of what they see.\n\nYou decide who to trust. Maybe you trust me because you've read my work for years. Maybe you trust someone else because three people you already trust have vouched for them. Maybe you browse the open firehose looking for new voices, but you do it _knowing_ you're in unvetted territory.\n\nBots can play this game. They can generate identities, produce content, even build fake trust networks where bots vouch for other bots. But here's the thing: trust graphs reveal character over time. Who you trust is a signal. An eloquent bot that vouches for a dozen slop factories will eventually betray itself, or reveal that it's a human with terrible judgment, which is its own useful information.\n\nNo system is immune to gaming. The question is what happens when gaming is detected. In an algorithmic feed, the damage is done: the slop already spread to millions. In a human-gated trust network, you prune the connection and move on. The cost of deception compounds. Reputation, once burned, stays behind with the abandoned key.\n\n---\n\nSo what do we call all of this? Signed identity, human-gated trust, filtering at the edges instead of the center?\n\nI've started calling it The Human Web.\n\nIt's not the human web because it excludes bots or guarantees only humans are contributing content. It's the human web because humans are restored to their rightful place as stewards of content and information.\n\nIt rebuilds something the internet has lost: a network of people vouching for people. Individuals deciding who to trust, and that trust extending outward through human relationships rather than algorithmic overrides.\n\nThe Human Web doesn't fight AI. It doesn't detect bots. It simply makes human judgment the gatekeeper again, and makes identity persistent enough that judgment can actually work.\n\n---\n\nImagine this world has matured.\n\nYour grandmother gets a call. It's your voice — or something that sounds exactly like it — urgently asking for money. Today, she might fall for it. The voice is convincing. The story is plausible. She has no way to verify.\n\nBut in a world where The Human Web is ubiquitous, she looks at her screen and sees: unknown identity. No history. No connection to anyone she trusts. Zero trust signal.\n\nShe hangs up.\n\nThat's the future I want to build. Not a world without deception — that's impossible. A world where deception is _legible_. Where you can see what you're dealing with. Where trust is earned slowly and lost instantly, and the scammers are operating uphill against a system designed for humans, by humans.\n\n---\n\nYou don't need to wait for platforms to change. You can start building The Human Web right now.\n\n**If you create content**: Start signing it. Get a Nostr identity. It takes five minutes. Every article, every post, every piece of work you publish can carry your signature. Make it visible. Put your public key in your bio. Link to it. Let people verify that the content they're reading came from you.\n\n**If you consume content**: Start asking for signatures. When you read something you value, check if it's signed. Follow writers who sign their work. Build your own list of people you trust. Ask your favorite platforms to integrate Nostr. Demand the ability to verify what you're reading.\n\n**If you build platforms**: Integrate the protocol. Nostr is free, open, and straightforward to implement. Let your users bring their own identities. Let them verify signatures. Give them tools to build trust networks. Stop gatekeeping identity. Cryptography does that job better than you ever will.\n\n**If you're skeptical**: Good. This isn't a perfect system. But it's better than algorithmic feeds pushing unattributable slop. Start small. Try it. See if knowing who created something changes how you engage with it.\n\nThe Human Web doesn't need everyone. It needs a critical mass. It needs you, and the people you trust, and the people they trust. That's how every network that matters has ever been built: human by human, connection by connection.\n\nPeople are already building pieces of this puzzle: clients, tools, protocols, applications. Some will succeed, some will fail. That's fine. The movement matters more than any single implementation.\n\nThis article is signed with my key. The next thing I publish will bear the same signature. Over time, you'll decide whether I'm worth trusting. That's not a bug; that's the whole point. Reputation can't be bought or algorithmically generated. It has to be earned, one piece of content at a time.\n\nI can't prove to you that I'm human by clicking on fire hydrants. But I can prove that whoever wrote this is the same person who will write the next thing. That's not a perfect system. But it's a _human_ system, and right now we need the web to be a little more human.\n\nHaters will say it's fake. But now you know how to check.","sig":"d51991100f30c9fe23c00949125b656ce77bee2d93eac067ea906ea76854821748fb4d5f2b31572afb5c8785356708d062e87595a36e633782cdbe3cb179a277"}
+    </script>
+
+    <script>
+      // Dark mode toggle
+      function toggleDarkMode() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", isDark);
+      }
+
+      // Render signed event JSON
+      const eventData = JSON.parse(
+        document.getElementById("nostr-event").textContent,
+      );
+      document.getElementById("event-json").textContent = JSON.stringify(
+        eventData,
+        null,
+        2,
+      );
+
+      // Copy event JSON to clipboard
+      function copyEvent() {
+        const json = JSON.stringify(eventData);
+        navigator.clipboard.writeText(json).then(() => {
+          const btn = event.target;
+          btn.textContent = "Copied";
+          setTimeout(() => (btn.textContent = "Copy"), 2000);
+        });
+      }
+    </script>
+  </body>
+</html>
