@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Does "Signed" Mean? - The Human Web</title>
+    <meta
+      name="description"
+      content="A plain-language explanation of cryptographic signatures: private keys, public keys, signing, verification, and why it matters for the internet."
+    />
+    <meta property="og:title" content="What Does &quot;Signed&quot; Mean? - The Human Web" />
+    <meta
+      property="og:description"
+      content="A plain-language explanation of cryptographic signatures: private keys, public keys, signing, verification, and why it matters for the internet."
+    />
+    <meta property="og:url" content="https://thehumanweb.org/signed" />
+    <meta name="twitter:card" content="summary" />
+    <!-- Source Serif 4 typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "earth-dark": "#8B7355",
+              "earth-light": "#B5654A",
+              "warm-bg": "#FDF8F3",
+              "dark-bg": "#2A2420",
+              "dark-surface": "#35302B",
+              "dark-text": "#F5F1E8",
+              "dark-text-muted": "#C9C1B5",
+            },
+            fontFamily: {
+              sans: [
+                "Source Serif 4",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+              serif: [
+                "Source Serif 4",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Initialize dark mode before page renders to prevent flash -->
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("darkMode");
+        if (savedMode === "true") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body
+    class="h-full bg-warm-bg dark:bg-dark-bg"
+  >
+    <div class="min-h-full flex flex-col">
+      <!-- Main Content -->
+      <main class="flex-1">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <!-- Page Header -->
+          <div class="flex items-center justify-between mb-16">
+            <a href="/" class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-dark-text hover:no-underline">The Human Web</a>
+            <button
+              id="dark-toggle"
+              onclick="toggleDarkMode()"
+              class="text-xl text-gray-600 hover:text-black transition-all hover:scale-110 dark:text-dark-text-muted dark:hover:text-dark-text"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dark:hidden">&#9790;</span>
+              <span class="hidden dark:inline">&#9728;</span>
+            </button>
+          </div>
+
+          <!-- Article -->
+          <article class="mb-12">
+            <!-- Article Header -->
+            <header class="mb-12">
+              <h2
+                class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 leading-tight dark:text-dark-text"
+              >
+                What Does &ldquo;Signed&rdquo; Mean?
+              </h2>
+            </header>
+
+            <!-- Article Content -->
+            <div
+              class="text-gray-800 leading-relaxed dark:text-dark-text space-y-6"
+            >
+              <p>
+                It all starts with a secret.
+              </p>
+
+              <p>
+                Your secret is a private key, a string of characters that only
+                you know. It's your secret. You generate it once, and you never
+                share it with anyone. The only requirements are that it's exactly
+                the right length and that it's random. You don't want a secret
+                that someone else might stumble into. As it turns out, humans
+                are not particularly good at creating random characters. Even
+                computers aren't always great at it. Tools have been developed
+                to help us generate sequences that are truly random.
+              </p>
+
+              <p>
+                From your secret, math derives your public key. The math is
+                important, but it's not important that you understand the math.
+                You only need to understand two things: first, the math always
+                produces the same result. Run it against your secret a thousand
+                times and you get the same public key every time. Second, the
+                math only works in one direction. Your public key is derived
+                from your secret, but your secret can never be computed from
+                your public key, even by someone who understands the math
+                completely. This is what makes it safe to share your public key
+                with the world.
+              </p>
+
+              <p>
+                So now you have two things: a secret that only you know, and a
+                public key that anyone can know. This is called a keypair, and
+                it's the foundation of everything that follows.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                Signing
+              </h3>
+
+              <p>
+                When you sign something, you feed your secret and the content
+                you're signing into the math together. Out comes a signature: a
+                string of characters that is unique to both your secret and the
+                exact content you signed. Change even a single character of the
+                content, and the signature would be completely different. A
+                different secret would also produce a completely different
+                signature.
+              </p>
+
+              <p>
+                A signature doesn't just say &ldquo;this came from me.&rdquo;
+                It says &ldquo;this exact content came from me, and it hasn't
+                been altered since I signed it.&rdquo;
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                Verification
+              </h3>
+
+              <p>
+                Here's where it gets useful. Anyone who has your public key can
+                verify a signature. They take the content, the signature, and
+                your public key, feed them into the math, and get a simple
+                answer: valid or not valid.
+              </p>
+
+              <p>
+                If the answer is valid, they know two things for certain. The
+                content was signed by whoever holds the secret behind that
+                public key. And the content hasn't been changed since it was
+                signed. Not a word, not a comma, not a single character.
+              </p>
+
+              <p>
+                If anything has been altered, verification fails. If someone
+                else tries to forge a signature, verification fails. There's no
+                gray area. It either checks out or it doesn't.
+              </p>
+
+              <p>
+                And here's the key thing: verifying requires no secrets. Anyone
+                can do it, anytime, using only your public key. Signing is
+                private. Verification is public.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                Identity
+              </h3>
+
+              <p>
+                A public key is an identity. Not a username assigned by a
+                company, not an email address tied to a provider. It's a
+                mathematical identity that you own completely. No one issued it
+                to you. No one can take it away. No one can impersonate it
+                without your secret.
+              </p>
+
+              <p>
+                Every time you sign something, you're saying: the same person
+                who signed everything else with this key also signed this. Over
+                time, that signature becomes meaningful. People read your work,
+                see the same public key attached to it, and form an opinion.
+                They start to recognize you, not by a display name that anyone
+                could copy, but by a key that only you can sign with.
+              </p>
+
+              <p>
+                This is identity as continuity. Not &ldquo;I am Stuart
+                Laughlin&rdquo; in some verified, government-ID sense. Just: I
+                am the same person who wrote that last thing, and the thing
+                before that, and the thing before that. Whoever I am, I'm
+                consistent. And if I publish something false or careless or
+                harmful, that's attached to my key forever. I can abandon the
+                key and start fresh, but I start at zero.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                Why this matters
+              </h3>
+
+              <p>
+                Today, most content on the internet is unsigned. When you read
+                an article, you're trusting that the platform is showing you
+                what the author actually wrote, that the author is who they
+                claim to be, and that nothing has been changed along the way.
+                You're trusting the platform, not the author.
+              </p>
+
+              <p>
+                Signed content removes the middleman. It doesn't matter where
+                you encounter it, what platform hosts it, or how many times
+                it's been copied and reposted. The signature travels with the
+                content. Anyone can verify it. The author's identity is baked
+                into the math, not granted by a platform.
+              </p>
+
+              <p>
+                This is the foundation that
+                <a href="/" class="text-earth-dark hover:underline dark:text-earth-light">The Human Web</a>
+                is built on.
+              </p>
+
+              <hr
+                class="border-gray-200 dark:border-dark-text-muted/20 my-8"
+              />
+
+              <p class="text-sm italic text-gray-600 dark:text-dark-text-muted">
+                Technical footnote: the private keys used in this system are 256
+                bits, which works out to 64 hexadecimal characters (0-9, a-f).
+                The specific math is called elliptic curve cryptography, and the
+                specific curve is secp256k1, the same one used by Bitcoin. None
+                of this matters for using the system. Tools handle it all for
+                you.
+              </p>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="bg-white/50 backdrop-blur-sm border-t border-gray-100 py-8 dark:bg-dark-surface/50 dark:border-dark-surface"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600 dark:text-dark-text-muted"
+        >
+          <div class="flex justify-center items-center space-x-4">
+            <a
+              href="https://nostrings.pub"
+              class="hover:text-earth-dark transition-colors dark:hover:text-dark-text"
+              >nostrings.pub</a
+            >
+            <span class="text-gray-400 dark:text-dark-text-muted"
+              >&#183;</span
+            >
+            <a
+              href="https://github.com/nostr-protocol/nostr"
+              target="_blank"
+              rel="noopener"
+              class="hover:text-earth-dark transition-colors dark:hover:text-dark-text"
+              >Nostr Protocol</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Dark mode toggle
+      function toggleDarkMode() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", isDark);
+      }
+    </script>
+  </body>
+</html>
