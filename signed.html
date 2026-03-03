@@ -115,36 +115,41 @@
               <p>
                 Your secret is a private key, a string of characters that only
                 you know. It's your secret. You generate it once, and you never
-                share it with anyone. The only requirements are that it's exactly
-                the right length and that it's random. You don't want a secret
-                that someone else might stumble into. As it turns out, humans
-                are not particularly good at creating random sequences. Even
-                computers aren't always great at it. Tools have been developed
-                to help us generate sequences that are truly random.
+                share it with anyone. The only requirements are that it's
+                exactly the right length and that it's random. You don't want a
+                secret that someone else might stumble into. As it turns out,
+                humans are not particularly good at creating random sequences.
+                Even computers aren't always great at it. Tools have been
+                developed to help us generate sequences that are truly random.
               </p>
 
               <p>
-                Keep your secret safe. It's the most important thing we'll
+                Keep your private key safe. It's the most important thing we'll
                 discuss. Everything else can be recreated from it.
               </p>
 
               <p>
-                From your secret, math derives your public key. The math is
-                important, but it's not important that you understand the math.
-                You only need to understand two things: first, the math always
-                produces the same result. Run it against your secret a thousand
-                times and you get the same public key every time. Second, the
-                math only works in one direction. Your public key is derived
-                from your secret, but your secret can never be computed from
-                your public key, even by someone who understands the math
-                completely. This is what makes it safe to share your public key
-                with the world.
+                From your secret private key, math generates another sequence.
+                This sequence is NOT random. It is derived from your private
+                key, but it is not a secret. Therefore this sequence is called
+                your public key. The math that generates it is important, but
+                it's not important that you understand the math. You only need
+                to understand two things: first, the math always produces the
+                same result. Run it against your private key a thousand times
+                and you get the same result every time. Second, the math only
+                works in one direction. Your public key is derived from your
+                secret, but your secret can never be computed from your public
+                key, even by someone who understands the math completely. This
+                is what makes it safe to share your public key with the world.
               </p>
 
               <p>
-                So now you have two things: a secret that only you know, and a
-                public key that anyone can know. This is called a keypair, and
-                it's the foundation of everything that follows.
+                So now you have two things: a private key that only you know,
+                and a public key that everyone can know. Together they are
+                called a keypair. They will be used over and over again: you
+                use your private key to sign your work, and everyone else uses
+                your public key to verify your signature. This is the
+                foundation of everything that follows.
               </p>
 
               <h3
@@ -154,19 +159,33 @@
               </h3>
 
               <p>
-                When you sign something, you feed your secret and the content
-                you're signing into the math together. Out comes a signature: a
-                string of characters that is unique to both your secret and the
-                exact content you signed. Change even a single character of the
-                content, and the signature would be completely different. A
-                different secret would also produce a completely different
-                signature.
+                When you sign something, you feed your private key and the
+                content you're signing into the math together. Out comes a
+                signature: a string of characters that is unique to both your
+                private key and the exact content you signed.
+              </p>
+
+              <p>
+                You are accustomed to thinking of your signature as being the
+                same, no matter what you sign. This is a different type of
+                signature. This signature looks completely different every time
+                you sign it. Change even a single letter of the content you're
+                signing, and your signature would be completely different. A
+                different private key would also produce a completely different
+                signature. This is why we need math to verify that the
+                signature is really yours.
               </p>
 
               <p>
                 A signature doesn't just say &ldquo;this came from me.&rdquo;
                 It says &ldquo;this exact content came from me, and it hasn't
                 been altered since I signed it.&rdquo;
+              </p>
+
+              <p>
+                So now we're up to four things: a private key that only you
+                know, a public key that everyone knows, the content you've
+                signed, and your signature, unique to each thing you sign.
               </p>
 
               <h3
@@ -176,10 +195,10 @@
               </h3>
 
               <p>
-                Here's where it gets useful. Anyone who has your public key can
-                verify a signature. They take the content, the signature, and
-                your public key, feed them into the math, and get a simple
-                answer: valid or not valid.
+                Here's where it gets useful. Anyone who has your public key
+                can verify your signature. They take the content you've signed,
+                your signature, and your public key, feed them into the math,
+                and get a simple answer: valid or not valid.
               </p>
 
               <p>
@@ -191,14 +210,14 @@
 
               <p>
                 If anything has been altered, verification fails. If someone
-                else tries to forge a signature, verification fails. There's no
-                gray area. It either checks out or it doesn't.
+                else tries to forge a signature, verification fails. There's
+                no gray area. It either checks out or it doesn't.
               </p>
 
               <p>
-                And here's the key thing: verifying requires no secrets. Anyone
-                can do it, anytime, using only your public key. Signing is
-                private. Verification is public.
+                And here's the crucial thing: verifying requires no secrets.
+                Anyone can do it, anytime, using only your public key. Signing
+                is private. Verification is public.
               </p>
 
               <h3
@@ -208,30 +227,34 @@
               </h3>
 
               <p>
-                A public key is an identity. Not a username assigned by a
-                company, not an email address tied to a provider. It's a
-                mathematical identity that you own completely. No one issued it
-                to you. No one can take it away. No one can impersonate it
-                without your secret.
+                A keypair is an identity. Your public key is the face of it,
+                the part the world sees. Your private key is the proof behind
+                it, the secret part with which you sign your work. This
+                identity is not a username assigned by a company, not an email
+                address tied to a provider. It's an identity rooted in your
+                secret, a mathematical identity that you own completely. No one
+                issued it to you. No one can take it away. No one can
+                impersonate it.
               </p>
 
               <p>
                 Every time you sign something, you're saying: the same person
-                who signed everything else with this key also signed this. Over
-                time, that signature becomes meaningful. People read your work,
-                see the same public key attached to it, and form an opinion.
-                They start to recognize you, not by a display name that anyone
-                could copy, but by a key that only you can sign with.
+                who signed everything else under this identity also signed
+                this. Over time, that identity becomes meaningful. People read
+                your work, see the same identity attached to it, and form an
+                opinion. They start to recognize you, not by a display name
+                that anyone could copy, but by an identity that only you can
+                represent.
               </p>
 
               <p>
                 This is identity as continuity. Not &ldquo;I am Stuart
-                Laughlin&rdquo; in some verified, government-ID sense. Just: I
-                am the same person who wrote that last thing, and the thing
-                before that, and the thing before that. Whoever I am, I'm
-                consistent. And if I publish something false or careless or
-                harmful, that's attached to my key forever. I can abandon the
-                key and start fresh, but I start at zero.
+                Laughlin&rdquo; in some verified, government-ID sense. Rather,
+                I am the same person who wrote that last thing, and the thing
+                before that, and the thing before that. Whoever I am, that's
+                me. And if I publish something false or careless or harmful,
+                that's attached to my identity forever. I can abandon the
+                identity and start fresh, but I start at zero.
               </p>
 
               <h3
@@ -267,12 +290,12 @@
               />
 
               <p class="text-sm italic text-gray-600 dark:text-dark-text-muted">
-                Technical footnote: the private keys used in this system are 256
-                bits, which works out to 64 hexadecimal characters (0-9, a-f).
-                The specific math is called elliptic curve cryptography, and the
-                specific curve is secp256k1, the same one used by Bitcoin. None
-                of this matters for using the system. Tools handle it all for
-                you.
+                Technical footnote: the private keys used in this system are
+                256 bits, which works out to 64 hexadecimal characters (0-9,
+                a-f). The specific math is called elliptic curve cryptography,
+                and the specific curve is secp256k1, the same one used by
+                Bitcoin. None of this matters for using the system. Tools
+                handle it all for you.
               </p>
             </div>
           </article>
