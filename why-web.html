@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why "Web"? - The Human Web</title>
+    <meta
+      name="description"
+      content="The Human Web is a web of trust: people connected to people through deliberate choices. What that means, why it matters, and why no single trust model fits every application."
+    />
+    <meta property="og:title" content="Why &quot;Web&quot;? - The Human Web" />
+    <meta
+      property="og:description"
+      content="The Human Web is a web of trust: people connected to people through deliberate choices. What that means, why it matters, and why no single trust model fits every application."
+    />
+    <meta property="og:url" content="https://thehumanweb.org/why-web" />
+    <meta name="twitter:card" content="summary" />
+    <!-- Source Serif 4 typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "earth-dark": "#8B7355",
+              "earth-light": "#B5654A",
+              "warm-bg": "#FDF8F3",
+              "dark-bg": "#2A2420",
+              "dark-surface": "#35302B",
+              "dark-text": "#F5F1E8",
+              "dark-text-muted": "#C9C1B5",
+            },
+            fontFamily: {
+              sans: [
+                "Source Serif 4",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+              serif: [
+                "Source Serif 4",
+                "ui-serif",
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Initialize dark mode before page renders to prevent flash -->
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("darkMode");
+        if (savedMode === "true") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body
+    class="h-full bg-warm-bg dark:bg-dark-bg"
+  >
+    <div class="min-h-full flex flex-col">
+      <!-- Main Content -->
+      <main class="flex-1">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <!-- Page Header -->
+          <div class="flex items-center justify-between mb-16">
+            <a href="/" class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-dark-text hover:no-underline">The Human Web</a>
+            <button
+              id="dark-toggle"
+              onclick="toggleDarkMode()"
+              class="text-xl text-gray-600 hover:text-black transition-all hover:scale-110 dark:text-dark-text-muted dark:hover:text-dark-text"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dark:hidden">&#9790;</span>
+              <span class="hidden dark:inline">&#9728;</span>
+            </button>
+          </div>
+
+          <!-- Article -->
+          <article class="mb-12">
+            <!-- Article Header -->
+            <header class="mb-12">
+              <h2
+                class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 leading-tight dark:text-dark-text"
+              >
+                Why &ldquo;Web&rdquo;?
+              </h2>
+            </header>
+
+            <!-- Article Content -->
+            <div
+              class="text-gray-800 leading-relaxed dark:text-dark-text space-y-6"
+            >
+              <p>
+                The name &ldquo;The Human Web&rdquo; is doing double duty.
+              </p>
+
+              <p>
+                It's the World Wide Web, obviously. But it's also a web of
+                trust: people connected to people through deliberate choices
+                about who to follow, who to vouch for, who to amplify. That
+                second meaning is the one that matters.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                The web was always social
+              </h3>
+
+              <p>
+                The web was social before Social Media. Blogrolls, RSS feeds,
+                forum signatures linking to personal sites, people vouching for
+                people. If you found a writer you liked, you checked who they
+                linked to. Their blogroll was a recommendation: these are voices
+                I think are worth your time. You followed the links, made your
+                own judgment, and maybe added a few to your own feed reader. The
+                chain was visible. You could trace how you found someone, and you
+                could walk away whenever you wanted.
+              </p>
+
+              <p>
+                That was a social structure. It was organic, messy, and
+                human-scale. It wasn't optimized. Nobody was A/B testing your
+                blogroll to maximize engagement. The signal was low-volume but
+                high-trust, because every connection was a choice someone made.
+              </p>
+
+              <p>
+                Social Media didn't add the social layer. It replaced an organic
+                one with an algorithmic one. &ldquo;Who do you trust?&rdquo;
+                became &ldquo;what gets engagement?&rdquo; The connections
+                between people stopped being the mechanism by which content
+                reached you. The algorithm took over that job, and it doesn't
+                know or care about trust.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                What a web of trust looks like
+              </h3>
+
+              <p>
+                You follow someone because you've read their work and decided
+                they're worth your attention. Maybe you found them through the
+                firehose, maybe a friend recommended them, maybe a platform
+                surfaced them based on your existing trust graph. The discovery
+                mechanism doesn't matter. What matters is that <em>you</em> made
+                the choice. They follow others. You don't know those people, but
+                you trust the person who trusts them. That's a web.
+              </p>
+
+              <p>
+                It's how recommendations have always worked offline. Word of
+                mouth. Referrals. &ldquo;My friend knows a guy.&rdquo; You
+                don't trust the guy directly. You trust your friend's judgment,
+                and that's enough to give the guy a shot.
+              </p>
+
+              <p>
+                Trust has distance. First-degree connections are people you
+                follow directly. You chose them. Second-degree connections are
+                people they follow, one step removed. Beyond that is the open
+                firehose: everything, from everyone, unfiltered.
+              </p>
+
+              <p>
+                You can always explore the firehose &mdash; nobody is stopping
+                you &mdash; but you know when you're doing it. The web has
+                edges, and you can see them. That visibility is the point. Not
+                restricting what you can see, but making sure you always know
+                where you stand.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                Following is complicated
+              </h3>
+
+              <p>
+                Here's where it gets honest.
+              </p>
+
+              <p>
+                Following someone can mean very different things depending on
+                context. Sometimes &ldquo;I follow this person&rdquo; means
+                &ldquo;I vouch for their judgment.&rdquo; Their recommendations
+                carry weight with me. If they trust someone, that's a meaningful
+                signal. Other times it just means &ldquo;I want to see their
+                stuff.&rdquo; Pure interest. No endorsement implied.
+              </p>
+
+              <p>
+                These often overlap, but not always. You might trust your
+                accountant's judgment completely and have zero interest in
+                reading his essays. You might enjoy a provocative writer without
+                trusting their judgment enough to let them shape your trust
+                graph.
+              </p>
+
+              <p>
+                And the balance between trust and taste depends on what you're
+                consuming.
+              </p>
+
+              <p>
+                Consider longform writing. If you respect someone's thinking
+                enough to read their essays, there's a decent chance you'd find
+                value in their reading list too. Following is a strong signal. It
+                says something about judgment, not just preference. A
+                recommendation from someone you follow carries real weight.
+              </p>
+
+              <p>
+                Now consider music. You have diverse tastes. Punk, orchestral,
+                folk, whatever. Who you follow on a music platform means almost
+                nothing to anyone except people who happen to share your exact
+                preferences, and even then maybe only in one genre.
+                &ldquo;Trust&rdquo; barely applies. It's almost purely taste, and
+                taste is multi-dimensional. Your follows are a scatter plot, not
+                a signal.
+              </p>
+
+              <p>
+                The correlation of trust and interest, then, is a spectrum. The
+                more a medium rewards sustained judgment, the stronger the trust
+                signal when someone follows. The more it rewards visceral,
+                aesthetic preference, the weaker. Longform writing sits at one
+                end. Music sits at the other. Film, podcasts, short video, they
+                all land somewhere in between.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                What this means for The Human Web
+              </h3>
+
+              <p>
+                This is where a lesser project would try to paper over the
+                complexity. Define &ldquo;follow&rdquo; precisely. Build one
+                trust algorithm. Ship it.
+              </p>
+
+              <p>
+                That would be a mistake. Baking a specific trust-propagation
+                model into the infrastructure would make it wrong for most
+                applications. A model tuned for longform writing would be
+                meaningless for music. A model tuned for music would be useless
+                for journalism. The spectrum proves that no single answer works.
+              </p>
+
+              <p>
+                So The Human Web doesn't try to answer it.
+              </p>
+
+              <p>The Human Web defines three things universally:</p>
+
+              <p>
+                <strong>Identity.</strong> A keypair. A signature. Continuity
+                over time. The foundation from the
+                <a href="/signed.html" class="text-earth-dark hover:underline dark:text-earth-light">crypto primer</a>,
+                unchanged.
+              </p>
+
+              <p>
+                <strong>The follow graph.</strong> Who follows whom. A portable,
+                verifiable record of the choices people have made about who to
+                pay attention to.
+              </p>
+
+              <p>
+                <strong>The principle.</strong> Trust propagates through human
+                choices, not algorithms. What you see is shaped by people you
+                chose to trust, not by an engagement-maximizing black box.
+              </p>
+
+              <p>
+                What The Human Web does <em>not</em> define: what
+                &ldquo;follow&rdquo; means in your application. How trust
+                propagates through the graph. How content gets filtered or
+                surfaced. That's yours to build.
+              </p>
+
+              <p>
+                This is by design, not a cop-out. Roads don't define whether
+                you're driving to work or to the beach. They give you the
+                infrastructure to get where you're going, and where you're going
+                is up to you. The Human Web works the same way. It provides the
+                foundation. Applications build meaning on top.
+              </p>
+
+              <p>
+                A longform writing platform can treat follows as strong
+                endorsements and surface second-degree content aggressively. A
+                music platform can treat follows as loose interest signals and
+                rely on other mechanisms entirely. Both are building on the same
+                identity layer, the same follow graph, the same principle that
+                humans decide what's trustworthy. They just interpret the data
+                differently, because they should.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                The old social media
+              </h3>
+
+              <p>
+                There's a recurring theme in these essays: The Human Web isn't
+                proposing something new. It's proposing a return to something
+                that worked, hardened with cryptography.
+              </p>
+
+              <p>
+                The blogroll era had the right structure. People vouching for
+                people. Organic discovery through human choices. Legible chains
+                of trust. It lacked the tools to scale it, verify it, or make it
+                portable across platforms. The Human Web adds those tools.
+              </p>
+
+              <p>
+                The new social media looks a lot like the old social media.
+                People choosing who to follow. Recommendations flowing through
+                human relationships. The ability to see where content came from
+                and why it reached you.
+              </p>
+
+              <p>
+                What it doesn't look like is Social Media: the algorithmic feed,
+                the engagement optimization, the opacity, the platform as
+                gatekeeper of identity and attention. That's the thing being
+                replaced, not the social web that came before it.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                Trust requires judgment
+              </h3>
+
+              <p>
+                One thing worth saying plainly: a web of trust is only as good
+                as the humans in it.
+              </p>
+
+              <p>
+                Some people will build echo chambers. Some will follow
+                exclusively within their own tribe and never look at the
+                firehose. That's their right, and at least they're doing it to
+                themselves with their eyes open, rather than having an algorithm
+                do it to them in the dark.
+              </p>
+
+              <p>
+                Some people will be bad judges of character. They'll vouch for
+                someone who turns out to be a fraud. That's fine. In an
+                algorithmic feed, the damage from a fraud spreads to millions
+                before anyone notices. In a web of trust, you prune one
+                connection and move on. The blast radius is limited by the
+                structure itself.
+              </p>
+
+              <p>
+                The web of trust doesn't eliminate bad judgment. It makes bad
+                judgment visible, local, and recoverable. That's a significant
+                upgrade over the alternative.
+              </p>
+
+              <h3
+                class="text-xl font-semibold text-gray-900 dark:text-dark-text pt-4"
+              >
+                It's not a platform
+              </h3>
+
+              <p>
+                When I say &ldquo;The Human Web,&rdquo; people hear &ldquo;a
+                new social media platform.&rdquo; It's not.
+              </p>
+
+              <p>
+                Your identity is a keypair. Your follow graph is a set of signed
+                declarations. These are yours. They're portable. They work on
+                any platform that honors the protocol. The Human Web is
+                infrastructure, not a destination.
+              </p>
+
+              <p>
+                Different platforms will build different experiences on top of
+                it. Some will be for writing, some for music, some for
+                conversation, some for things nobody has thought of yet. They'll
+                interpret follows differently, surface content differently,
+                define trust differently. That's not fragmentation. That's the
+                system working as intended.
+              </p>
+
+              <p>
+                The web of trust is the connective tissue. Your identity and
+                your relationships travel with you. The applications are just
+                lenses.
+              </p>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="bg-white/50 backdrop-blur-sm border-t border-gray-100 py-8 dark:bg-dark-surface/50 dark:border-dark-surface"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600 dark:text-dark-text-muted"
+        >
+          <div class="flex justify-center items-center space-x-4">
+            <a
+              href="https://nostrings.pub"
+              class="hover:text-earth-dark transition-colors dark:hover:text-dark-text"
+              >nostrings.pub</a
+            >
+            <span class="text-gray-400 dark:text-dark-text-muted"
+              >&#183;</span
+            >
+            <a
+              href="https://github.com/nostr-protocol/nostr"
+              target="_blank"
+              rel="noopener"
+              class="hover:text-earth-dark transition-colors dark:hover:text-dark-text"
+              >Nostr Protocol</a
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Dark mode toggle
+      function toggleDarkMode() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", isDark);
+      }
+    </script>
+  </body>
+</html>
